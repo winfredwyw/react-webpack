@@ -1,0 +1,35 @@
+/**
+ *  变量声明，及共用function
+ */
+
+$baseRem: 0.013333333rem;
+$baseFontSize: 1px !default;
+$baseColor: #ff7700;
+$focusColor: #ff5500;
+$baseBorderColor: #eee;
+// pixels to rems 除文字以外以rem单位适配
+@function pxToRem($px) {
+    @return $px / $baseFontSize * $baseRem;
+}
+
+// 清除浮动
+@mixin clearfix () {
+    &:after {
+        content:' ';
+        display:block;
+        height:0;
+        clear:both;
+    }
+}
+
+// 滚动
+@mixin scroll () {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+// 背景铺满
+@mixin fullbg () {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

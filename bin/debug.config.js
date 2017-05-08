@@ -1,28 +1,23 @@
 /**
- * 开发模式webpack配置
+ * debug模式webpack配置
  */
 var path = require('path'),
     webpack = require('webpack');
 
 var autoprefixer = require('autoprefixer');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-
-// 本地开发ip
-var DEVELOP_IP = '10.119.25.148';
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 // 相对于该文件的绝对路径
 var _staticPath = function (pa) {
     return path.join(__dirname, pa);
 }
 
-// 静态资源版本号
 var _VESION = 1.0;
 
 var config = {
     entry: {
         app: [
-            'webpack/hot/dev-server',
-            'webpack-hot-middleware/client?http://' + DEVELOP_IP + ':5252/',
             _staticPath('../app')
         ],
         bundle: ['react', 'react-dom', 'react-router-dom', 'react-redux']
@@ -30,7 +25,7 @@ var config = {
     },
     output: {
         path: _staticPath('../build'),
-        publicPath: 'http://' + DEVELOP_IP + ':5252/build/',
+        publicPath: './',
         filename: '[name].min.js'
     },
     module: {
@@ -47,11 +42,11 @@ var config = {
                 exclude: /node_modules/ 
             },
             // 图片转化，小于8k自动转化成base64编码
-            { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=8192&name=images/[name].[ext]', exclude: /node_modules/ },
+            { test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=8192&name=images/[name].[ext]?v=' + _VESION, exclude: /node_modules/ },
             // 字体
-            { test: /\.(woff|svg|eot|ttf|otf)\??.*$/, loader: 'file-loader?name=iconfont/[name].[ext]', exclude: /node_modules/ },
+            { test: /\.(woff|svg|eot|ttf|otf)\??.*$/, loader: 'file-loader?name=iconfont/[name].[ext]?v=' + _VESION, exclude: /node_modules/ },
             // 音乐
-            { test: /\.mp3$/, loader: 'file-loader?name=music/[name].[ext]', exclude: /node_modules/ }
+            { test: /\.mp3$/, loader: 'file-loader?name=music/[name].[ext]?v=' + _VESION, exclude: /node_modules/ }
         ]
     },
     // 重命名
@@ -86,13 +81,11 @@ var config = {
             // app版本号
             __VESION__: _VESION
         }),
-        // 热替换
-        new webpack.HotModuleReplacementPlugin(),
         // css打包
-        new ExtractTextPlugin('app.min.css')
+        new ExtractTextPlugin('app.min.css'),
     ],
     // 调试map
-    devtool: 'cheap-source-map'
+    devtool: 'source-map'
 };
 
 module.exports = config;

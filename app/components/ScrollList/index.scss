@@ -1,0 +1,14 @@
+@import '../../lib/common/fn.scss';
+.c-scroller {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    .loadmore-tip {
+        line-height: pxToRem(60px);
+        text-align: center;
+        font-size: pxToRem(18px);
+    }
+}

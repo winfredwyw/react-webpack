@@ -1,0 +1,15 @@
+@import '../../lib/common/fn.scss';
+
+.c-cart-num {
+    display: inline-block;
+    position: absolute;
+    line-height: pxToRem(20px);
+    min-width: pxToRem(20px);
+    bottom: pxToRem(30px);
+    left: pxToRem(30px);
+    background-color: $baseColor;
+    padding: pxToRem(8px);
+    text-align: center;
+    border-radius: pxToRem(60px);
+    color: #fff;
+}

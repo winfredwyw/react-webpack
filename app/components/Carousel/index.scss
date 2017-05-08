@@ -1,0 +1,54 @@
+@import '../../lib/common/fn.scss';
+
+// 轮播图
+.c-carousel-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #eee;
+    position: relative;
+
+    .c-carousel-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        transition: transform 0.4s ease-in-out;
+        text-align: center;
+
+        .c-carousel-slide {
+            position: relative;
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+
+            img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+
+    .c-carousel-tag {
+        position: absolute;
+        right: pxToRem(20px);
+        bottom: pxToRem(20px);
+        padding: pxToRem(10px) pxToRem(16px);
+        background: rgba(0, 0, 0, 0.45);
+        border-radius: pxToRem(4px);
+        color: #fff;
+
+        span {
+            font-size: pxToRem(14px);
+            letter-spacing: pxToRem(4px);
+
+            &:first-child {
+                font-size: pxToRem(30px);
+            }
+        }
+    }
+}

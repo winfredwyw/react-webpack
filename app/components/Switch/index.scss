@@ -1,0 +1,35 @@
+@import '../../lib/common/fn.scss';
+
+.c-switch {
+    display: inline-block;
+    position: relative;
+    width: pxToRem(104px);
+    height: pxToRem(64px);
+    border-radius: pxToRem(56px);
+    overflow: hidden;
+
+    &.open .switch-bg{        
+        background-color: #52e267;
+    }
+    &.open .switch-btn{
+        left: auto;
+        right: pxToRem(4px);
+    }
+
+    .switch-bg {
+        width: 100%;
+        height: 100%;
+        background-color: #eee;
+    }
+    .switch-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: auto;
+        left: pxToRem(4px);
+        height: pxToRem(56px);
+        width: pxToRem(56px);
+        border-radius: pxToRem(56px);
+        background-color: #fff;
+    }
+}

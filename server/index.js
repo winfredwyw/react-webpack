@@ -8,6 +8,7 @@ var path = require('path'),
     color = require('colors');
 
 var webpack = require('webpack');
+var proxy = require('http-proxy-middleware');//引入代理中间件
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpackConfig = require('../bin/webpack.config.js');
@@ -33,6 +34,19 @@ if (_ENV == 'dev') {
 } else {
     app.use(express.static('./build/'));
 }
+
+// 配置接口代理
+const apiProxy = proxy(
+    // 代理路由匹配
+    ["/item", "/trade", '/user'], 
+    {
+        // 代理的域名地址
+        target: 'https://www.baidu.com', 
+        changeOrigin: true
+    }
+);
+// 使用代理路由匹配
+app.use(/((?!(mob)).)*/, apiProxy);
 
 // 开启监听
 app.listen(5252, function () {

@@ -1,0 +1,60 @@
+@import '../../lib/common/fn.scss';
+
+.c-select {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #eee;
+    color: #333;
+
+    .c-select-header {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        padding-left: pxToRem(20px);
+        line-height: pxToRem(80px);
+        background-color: #eee;
+        z-index: 5;
+
+        span {
+            margin-right: pxToRem(38px);
+        
+            &.cur {
+                color: $baseColor;
+            }
+        }
+    }
+
+    .c-select-list {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box;
+        padding-left: pxToRem(20px);
+        padding-top: pxToRem(80px);
+        background-color: #fff; 
+    }
+
+    .c-select-item {
+        line-height: pxToRem(92px);
+        border-bottom: 1px solid $baseBorderColor;
+        position: relative;
+        .iconfont {
+            display: none;
+        }
+
+        &.cur .iconfont {
+            display: inline-block;
+            position: absolute;
+            right: pxToRem(20px);
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: pxToRem(32px);
+            color: $baseColor;
+        }
+    }
+}

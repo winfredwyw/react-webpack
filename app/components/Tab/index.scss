@@ -1,0 +1,10 @@
+.c-tab {
+    .c-tab-content {
+        .con {
+            display: none;
+            &.active {
+                display: block;
+            }
+        }
+    }
+}

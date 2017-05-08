@@ -1,0 +1,106 @@
+// 重置样式
+@import './reset.scss';
+// 字体图标库
+@import '../iconfont/iconfont.scss';
+// 样式函数
+@import '../common/fn.scss';
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+/** 公共基础样式 **/
+#root {
+    width: 100%;
+    height: 100%;
+}
+
+#js-app-content {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .page {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+// 设置body默认字体大小
+@media screen and (min-width: 320px) and (max-width:375px) {
+    body {
+        font-size: 12px;
+    }
+}
+@media screen and (min-width:376px) and (max-width:414px) {
+    body {
+        font-size: 16px;
+    }
+}
+@media screen and (min-width:415px) and (max-width:749px) {
+    body {
+        font-size: 20px;
+    }
+}
+@media screen and (min-width:750px) and (max-width:799px) { 
+    body {
+        font-size: 24px;
+    }
+}
+@media screen and (min-width:800px) {
+    body {
+        font-size: 30px;
+    }
+}
+
+// 右浮动
+.fr {
+    float: right;
+}
+
+// 左浮动
+.fl {
+    float: left;
+}
+
+// margin样式
+.mgr20 {
+    margin-right: pxToRem(20px);
+}
+
+.mgr10 {
+    margin-right: pxToRem(10px);
+}
+
+.mgl20 {
+    margin-left: pxToRem(20px);
+}
+
+.mgl10 {
+    margin-left: pxToRem(10px);
+}
+
+// 文字颜色
+.clr0 {
+    color: #ff7700;
+}
+
+.clr333 {
+    color: #333;
+}
+
+.clr666 {
+    color: #666;
+}
+
+.clr999 {
+    color: #999;
+}
+/** 公共基础样式end **/

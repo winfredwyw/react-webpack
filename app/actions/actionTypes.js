@@ -1,0 +1,3 @@
+// 用户actions
+export const RECEIVE_LOGIN_INFO = 'RECEIVE_LOGIN_INFO';
+export const RECEIVE_USER_CART = 'RECEIVE_USER_CART';

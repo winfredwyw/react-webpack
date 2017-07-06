@@ -8,7 +8,7 @@ var path = require('path'),
     color = require('colors');
 
 var webpack = require('webpack');
-var proxy = require('http-proxy-middleware');//引入代理中间件
+var proxy = require('http-proxy-middleware');// 引入代理中间件
 var webpackDevMiddleware = require('webpack-dev-middleware');
 var webpackHotMiddleware = require('webpack-hot-middleware');
 var webpackConfig = require('../bin/webpack.config.js');
@@ -19,7 +19,7 @@ var _ENV = process.env.NODE_ENV;
 // 相对于服务启动文件的绝对
 var staticPath = function (pa) {
     return path.join(__dirname, pa);
-}
+};
 
 // 配置服务
 app.set('views', staticPath('views'));
@@ -27,7 +27,8 @@ app.set('view engine', 'ejs');
 app.use(router);
 if (_ENV == 'dev') {
     app.use(webpackDevMiddleware(compiler, {
-        publicPath: webpackConfig.output.publicPath,
+        publicPath: webpackConfig[0].output.publicPath,
+        reload: true,
         stats: { colors: true }
     }));
     app.use(webpackHotMiddleware(compiler));
@@ -36,19 +37,26 @@ if (_ENV == 'dev') {
 }
 
 // 配置接口代理
-const apiProxy = proxy(
-    // 代理路由匹配
-    ["/item", "/trade", '/user'], 
-    {
-        // 代理的域名地址
-        target: 'https://www.baidu.com', 
-        changeOrigin: true
-    }
-);
-// 使用代理路由匹配
-app.use(/((?!(mob)).)*/, apiProxy);
+// const apiProxy = proxy(
+//     ['/item', '/trade', '/user', '/goodsList'], 
+//     { 
+//         target: '', 
+//         changeOrigin: true
+//     }
+// );
+// app.use(/((?!(mob)).)*/, apiProxy);
 
 // 开启监听
-app.listen(5252, function () {
-    console.log('----> Listen on 5252'.green);
+// app.listen(5252, function () {
+//     console.log('----> Listen on 5252'.green);
+// });
+
+var reload = require('reload');
+var http = require('http');
+
+var server = http.createServer(app);
+reload(server, app);
+
+server.listen(5252, function(){
+    console.log('App (dev) is now running on port 5252!');
 });

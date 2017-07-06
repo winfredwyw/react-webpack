@@ -3,7 +3,7 @@
     <head>
         <title><%= title %></title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <link rel="stylesheet" href="http://<%= ip %>:5252/build/app.min.css">
+        <link rel="stylesheet" href="http://<%= ip %>:5252/build/<%= file %>/app.min.css">
         <script type="text/javascript">
             window.onerror = function (err, line) {
                 alert(err);
@@ -17,13 +17,12 @@
     </head>
     <body>
         <div id="root">
-            <div>首屏加载</div>
+            <div>首屏加载2</div>
         </div>
         <!--静态资源域名 +  app/douyu-mobile/m-public-vendor/zepto.js-->
         <script src="http://dev.static.dz11.com/app/douyu-mobile/m-public-vendor/zepto.js" type="text/javascript"></script>
         <!--静态资源域名 +  app/douyu-mobile/m-douyu-react/build/app.min.js-->
-        <script type="text/javascript" src="http://<%= ip %>:5252/build/bundle.min.js"></script>
-        <script type="text/javascript" src="http://<%= ip %>:5252/build/app.min.js"></script>
+        <script type="text/javascript" src="http://<%= ip %>:5252/build/<%= file %>/app.min.js"></script>
         <script src="/reload/reload.js"></script>
     </body>
 </html>

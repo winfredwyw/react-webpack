@@ -4,6 +4,7 @@ var path = require('path'),
     autoprefixer = require('autoprefixer'),
     ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+// 开发者电脑IP
 var DEVELOP_IP = appConfig.dev_ip;
 
 // 相对于该文件的绝对路径
@@ -11,22 +12,15 @@ var _staticPath = function (pa) {
     return path.join(__dirname, pa);
 };
 
-var _VESION = appConfig.vesion;
-
-// var hotMiddlewareScript = 'webpack-hot-middleware/client?path=/__webpack_hmr&timeout=10000&reload=true'
 var hotMiddlewareScript = 'webpack-hot-middleware/client?http://' + DEVELOP_IP + ':5252/';
 var config = [
     {
         entry: {
             app: [
-                // 'webpack/hot/dev-server',
-                // 'webpack-hot-middleware/client?http://' + DEVELOP_IP + ':5252/',
-                // 'webpack-hot-middleware/client?http://' + DEVELOP_IP + ':5252/',
                 _staticPath('../app'),
                 hotMiddlewareScript
             ],
             bundle: ['react', 'react-dom', 'react-router-dom', 'react-redux']
-            // bundle: ['react', 'react-dom']
         },
         output: {
             path: _staticPath('../build'),

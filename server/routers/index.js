@@ -5,6 +5,11 @@ var express = require('express'),
     appConfig = require('../../bin/config.js'),
     router = express.Router();
 
+// 项目介绍页
+router.get("/", function (req, res, next) {
+    res.render('index', { title: '首页', ip: appConfig.dev_ip });
+});
+
 // 解析包含/mob/的路径（spa）
 router.get(/mob/, function (req, res, next) {
     res.render('index', { title: '首页', ip: appConfig.dev_ip });

@@ -5,7 +5,8 @@ var path = require('path'),
     express = require('express'),
     router = require('./routers'),
     app = express(),
-    color = require('colors');
+    color = require('colors'),
+    appConfig = require('../bin/config.js');
 
 var webpack = require('webpack');
 var proxy = require('http-proxy-middleware');// 引入代理中间件
@@ -53,10 +54,12 @@ if (_ENV == 'dev') {
 
 var reload = require('reload');
 var http = require('http');
+var open = require("open");
 
 var server = http.createServer(app);
 reload(server, app);
 
 server.listen(5252, function(){
     console.log('App (dev) is now running on port 5252!');
+    open("http://" +  appConfig.dev_ip + ':5252' + '/mob/', "chrome");
 });

@@ -4,7 +4,7 @@ import ReactDom from 'react-dom';
 import '../lib/base';
 
 ReactDom.render(
-    <div>Hello World!</div>,
+    <div>Hello World234!</div>,
     document.getElementById('root')
 );
 

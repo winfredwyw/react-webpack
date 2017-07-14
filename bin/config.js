@@ -39,19 +39,19 @@ const config = {
             // 图片转化，小于1k自动转化成base64编码
             {
                 test: /\.(png|jpg|gif)$/,
-                loader: 'url-loader?limit=1024&name=images/[name].[ext]?v=' + _VESION,
+                loader: 'url-loader?limit=1024&name=images/[name][hash].[ext]?v=' + _VESION,
                 exclude: /node_modules/
             },
             // 字体
             {
                 test: /\.(woff|svg|eot|ttf|otf)\??.*$/,
-                loader: 'file-loader?name=iconfont/[name].[ext]?v=' + _VESION,
+                loader: 'file-loader?name=iconfont/[name][hash].[ext]?v=' + _VESION,
                 exclude: /node_modules/
             },
             // 音乐
             {
                 test: /\.mp3$/,
-                loader: 'file-loader?name=music/[name].[ext]?v=' + _VESION,
+                loader: 'file-loader?name=music/[name][hash].[ext]?v=' + _VESION,
                 exclude: /node_modules/
             }
         ]

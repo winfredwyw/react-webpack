@@ -14,7 +14,7 @@ var config = [
    {
         entry: {
             app: [
-                _staticPath('../app')
+                _staticPath('../spa')
             ],
             bundle: ['react', 'react-dom', 'react-router-dom', 'react-redux']
         },

@@ -17,7 +17,7 @@ var config = [
     {
         entry: {
             app: [
-                _staticPath('../app'),
+                _staticPath('../spa'),
                 hotMiddlewareScript
             ],
             bundle: ['react', 'react-dom', 'react-router-dom', 'react-redux']

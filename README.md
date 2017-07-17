@@ -20,6 +20,7 @@
 |--server  服务器
 |--mpa  多页面开发代码
 |--lib  项目辅助函数库
+|--source 项目依赖的资源（不会经过webpack打包的，放在该文件夹会自动复制到build下面）
 |--package.json  npm配置文件
 |--README.md  项目说明
 ```
@@ -29,7 +30,7 @@
 ### spa
 
 ```
-/mob/*
+/mob/*(*代表前端路由)
 ```
 
 ### mpa

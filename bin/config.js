@@ -5,13 +5,14 @@ var glob = require('glob'),
     OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
     path = require('path');
 
-var _VESION = 1.2;
+// 版本
+var _VESION__ = 1.0;
 // 环境
 var _ENV_ = process.env.NODE_ENV;
 
 const config = {
     // 资源版本号
-    vesion: _VESION,
+    vesion: _VESION__,
     // webpack-loaders
     loaders: (function () {
         let ret = [
@@ -39,19 +40,19 @@ const config = {
             // 图片转化，小于1k自动转化成base64编码
             {
                 test: /\.(png|jpg|gif)$/,
-                loader: 'url-loader?limit=1024&name=images/[name][hash].[ext]?v=' + _VESION,
+                loader: 'url-loader?limit=1024&name=images/[name][hash:6].[ext]',
                 exclude: /node_modules/
             },
             // 字体
             {
                 test: /\.(woff|svg|eot|ttf|otf)\??.*$/,
-                loader: 'file-loader?name=iconfont/[name][hash].[ext]?v=' + _VESION,
+                loader: 'file-loader?name=iconfont/[name][hash:6].[ext]',
                 exclude: /node_modules/
             },
             // 音乐
             {
                 test: /\.mp3$/,
-                loader: 'file-loader?name=music/[name][hash].[ext]?v=' + _VESION,
+                loader: 'file-loader?name=music/[name][hash:6].[ext]',
                 exclude: /node_modules/
             }
         ]
@@ -103,7 +104,7 @@ const config = {
                 // app环境
                 NODE_ENV: JSON.stringify(process.env.NODE_ENV),
                 // app版本号
-                __VESION__: _VESION
+                __VESION__: _VESION__
             })
         ],
         // 压缩
